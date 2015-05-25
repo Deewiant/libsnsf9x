@@ -2,7 +2,6 @@
 #define WIN32_LEAN_AND_MEAN
 #include "leakchk.h"
 
-#include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -94,6 +93,7 @@ int xsf_get_lib(char *pfilename, void **ppbuffer, unsigned *plength)
 	return 1;
 }
 
+#ifdef _WIN32
 BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 {
 	if (fdwReason == DLL_PROCESS_ATTACH)
@@ -105,5 +105,4 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
 	}
 	return TRUE;
 }
-
-
+#endif

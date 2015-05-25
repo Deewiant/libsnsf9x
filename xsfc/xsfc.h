@@ -620,6 +620,8 @@ public:
 	}
 };
 
+#ifdef _WIN32
+
 class TWin32
 {
 public:
@@ -685,6 +687,7 @@ public:
 	}
 };
 
+#endif
 
 }
 
