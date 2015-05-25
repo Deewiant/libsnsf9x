@@ -1,3 +1,7 @@
+#ifndef _WIN32
+#define _strnicmp strncasecmp
+#endif
+
 #ifdef __cplusplus
 
 #include "xsfc.h"
