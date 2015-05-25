@@ -1,24 +1,7 @@
-#define XSFDRIVER_VERSIONS "0.04.10"
-#define XSFDRIVER_MODULENAME "snsf9x.bin"
-#define XSFDRIVER_ENTRYNAME "XSFSetup"
-#define XSFDRIVER_ISSYSTEMTAG(taglen, tag) (((taglen) > 0) && ((tag)[0] == '_'))
-#define XSFDRIVER_GUID1 { 0x84ea7055, 0xb6ef, 0x4f4f, { 0x96, 0xf8, 0x53, 0xd6, 0xf1, 0xb, 0x48, 0x57 } }  /* {84EA7055-B6EF-4f4f-96F8-53D6F10B4857} */
-#define XSFDRIVER_GUID2 { 0x369d0f23, 0x1ecd, 0x4f3b, { 0xb7, 0x00, 0xe2, 0xe4, 0xe9, 0xd3, 0xfa, 0x30 } } /* {369D0F23-1ECD-4f3b-B700-E2E4E9D3FA30} */
-#define XSFDRIVER_CHANNELMAP { { 8, "BRRPCM %d" } , { 0, 0 } }
-#define XSFDRIVER_SIMPLENAME "SNSF Decoder"
-#define XSFDRIVER_SAMPLERATE 48000
-
-
-#define XSFDRIVER_INTERPOLATION_COUNT 5
 #define XSFDRIVER_INTERPOLATION_NAME { "Gaussian", "None", "Linear", "Cubic", "Sinc" }
 #define XSFDRIVER_INTERPOLATION_VALUE { 0, -2, -1, 1, 2 }
-#define XSFDRIVER_RESAMPLER_COUNT 5
 #define XSFDRIVER_RESAMPLER_NAME { "Hermite", "Linear", "Bspline", "Osculating", "Sinc" }
 #define XSFDRIVER_RESAMPLER_VALUE {1, -1, 2, 3, 4}
-#define XSFDRIVER_SAMPLERATE_COUNT 12
-#define XSFDRIVER_SAMPLERATE_NAME { "48000", "8000", "11025", "16000", "22050", "32000", "44100", "64000", "88200", "96000", "176400", "192000" }
-#define XSFDRIVER_SAMPLERATE_VALUE { 48000, 8000, 11025, 16000, 22050, 32000, 44100, 64000, 88200, 96000, 176400, 192000 }
-
 
 
 #define SNES9X_NAME "Snes9x"
