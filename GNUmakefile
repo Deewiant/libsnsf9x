@@ -7,7 +7,12 @@ OBJS := $(patsubst %.c,%.o,$(patsubst %.cpp,%.o,$(SRCS)))
 libsnsf9x.so: $(OBJS)
 	$(CXX) -shared -o $@ $^ -lz
 
+install: libsnsf9x.so
+	install -Dm 755 -t "$(PREFIX)"/lib libsnsf9x.so
+	install -Dm 644 -t "$(PREFIX)"/include/snsf9x snsf9x.h pversion.h
+	install -Dm 644 -t "$(PREFIX)"/include/snsf9x/xsfc xsfc/tagget.h xsfc/xsfdrv.h
+
 clean:
 	rm -f libsnsf9x.so $(OBJS)
 
-.PHONY: clean
+.PHONY: clean install
