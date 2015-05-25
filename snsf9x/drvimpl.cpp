@@ -256,7 +256,7 @@ static XSFTag::enum_callback_returnvalue load_psfcb(void *pWork, const char *pNa
 {
 	loadlibwork_t *pwork = (loadlibwork_t *)pWork;
 	XSFTag::enum_callback_returnvalue ret = XSFTag::enum_continue;
-	if (size_t(pNameEnd - pNameTop) == pwork->taglen && !_strnicmp(pNameTop, pwork->tag , pwork->taglen))
+	if (size_t(pNameEnd - pNameTop) == pwork->taglen && !strncasecmp(pNameTop, pwork->tag , pwork->taglen))
 	{
 		ptrdiff_t l = pValueEnd - pValueTop;
 		char *lib = (char*) malloc(l + 1);

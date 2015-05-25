@@ -18,6 +18,11 @@
 #pragma comment(linker,"/MERGE:.rdata=.text")
 #endif
 
+typedef int BOOL;
+typedef uint32_t DWORD;
+typedef const wchar_t* LPCWSTR;
+typedef void* LPVOID;
+
 static void * XSFLibAlloc(DWORD dwSize)
 {
 	return malloc(dwSize);

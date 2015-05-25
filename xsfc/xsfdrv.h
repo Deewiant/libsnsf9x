@@ -4,29 +4,23 @@ extern "C" {
 
 #include <stdint.h>
 
-typedef int BOOL;
-typedef uint32_t DWORD;
-typedef const wchar_t* LPCWSTR;
-typedef char* LPSTR;
-typedef void* LPVOID;
-
-typedef int (* LPFNGETLIB_XSFDRV)(void *lpWork, LPSTR lpszFilename, void **ppBuffer, DWORD *pdwSize);
+typedef int (* LPFNGETLIB_XSFDRV)(void *lpWork, char *lpszFilename, void **ppBuffer, uint32_t *pdwSize);
 typedef struct
 {
 	/* V1 */
-	void * (* LibAlloc)(DWORD dwSize);
+	void * (* LibAlloc)(uint32_t dwSize);
 	void (* LibFree)(void *lpPtr);
-	int (* Start)(void *lpPtr, DWORD dwSize);
-	void (* Gen)(void *lpPtr, DWORD dwSamples);
+	int (* Start)(void *lpPtr, uint32_t dwSize);
+	void (* Gen)(void *lpPtr, uint32_t dwSamples);
 	void (* Term)(void);
 
 	/* V2 */
-	DWORD dwInterfaceVersion;
-	void (* SetChannelMute)(DWORD dwPage, DWORD dwMute);
+	uint32_t dwInterfaceVersion;
+	void (* SetChannelMute)(uint32_t dwPage, uint32_t dwMute);
 
 	/* V3 */
-	void (* SetExtendParam)(DWORD dwId, LPCWSTR lpPtr);
-	void (* SetExtendParamVoid)(DWORD dwId, const LPVOID lpPtr);
+	void (* SetExtendParam)(uint32_t dwId, const wchar_t* lpPtr);
+	void (* SetExtendParamVoid)(uint32_t dwId, const void* lpPtr);
 } IXSFDRV;
 
 typedef IXSFDRV * (* LPFNXSFDRVSETUP)(LPFNGETLIB_XSFDRV lpfn, void *lpWork);

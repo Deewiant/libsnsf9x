@@ -1,7 +1,3 @@
-#ifndef _WIN32
-#define _strnicmp strncasecmp
-#endif
-
 #ifdef __cplusplus
 
 #include "xsfc.h"
@@ -122,7 +118,7 @@ protected:
 	{
 		xsf_tagexists_work_t *pwork = static_cast<xsf_tagexists_work_t *>(pWork);
 		(void)pValueTop, pValueEnd;
-		if (pwork->taglen == pNameEnd - pNameTop && !_strnicmp(pNameTop, pwork->tag, pwork->taglen))
+		if (pwork->taglen == pNameEnd - pNameTop && !strncasecmp(pNameTop, pwork->tag, pwork->taglen))
 		{
 			pwork->ret = true;
 			return enum_break;
@@ -167,7 +163,7 @@ protected:
 	static enum enum_callback_returnvalue enum_callback_tagget(void *pWork, const char *pNameTop, const char *pNameEnd, const char *pValueTop, const char *pValueEnd)
 	{
 		xsf_tagget_work_t *pwork = static_cast<xsf_tagget_work_t *>(pWork);
-		if (pwork->taglen == pNameEnd - pNameTop && !_strnicmp(pNameTop, pwork->tag, pwork->taglen))
+		if (pwork->taglen == pNameEnd - pNameTop && !strncasecmp(pNameTop, pwork->tag, pwork->taglen))
 		{
 			pwork->ret = xsfc::TString(pwork->futf8, pValueTop, pValueEnd - pValueTop);
 			return enum_break;
@@ -354,18 +350,22 @@ public:
 };
 #else
 
-static DWORD getdwordle(const BYTE *pData)
+#include <stdint.h>
+#include <stdlib.h>
+#include <string.h>
+
+static uint32_t getdwordle(const unsigned char *pData)
 {
-	return pData[0] | (((DWORD)pData[1]) << 8) | (((DWORD)pData[2]) << 16) | (((DWORD)pData[3]) << 24);
+	return pData[0] | (((uint32_t)pData[1]) << 8) | (((uint32_t)pData[2]) << 16) | (((uint32_t)pData[3]) << 24);
 }
 
-static DWORD xsf_tagsearchraw(const void *pData, DWORD dwSize)
+static uint32_t xsf_tagsearchraw(const void *pData, uint32_t dwSize)
 {
-	const BYTE *pdata = (const BYTE *)pData;
-	DWORD dwPos;
-	DWORD dwReservedAreaSize;
-	DWORD dwProgramLength;
-	DWORD dwProgramCRC;
+	const unsigned char *pdata = (const unsigned char *)pData;
+	uint32_t dwPos;
+	uint32_t dwReservedAreaSize;
+	uint32_t dwProgramLength;
+	uint32_t dwProgramCRC;
 	if (dwSize < 16 + 5 + 1) return 0;
 	if (pdata[0] != 'P') return 0;
 	if (pdata[1] != 'S') return 0;
@@ -377,9 +377,9 @@ static DWORD xsf_tagsearchraw(const void *pData, DWORD dwSize)
 	if (dwPos >= dwSize) return 0;
 	return dwPos;
 }
-static int xsf_tagsearch(DWORD *pdwRet, const BYTE *pData, DWORD dwSize)
+static int xsf_tagsearch(uint32_t *pdwRet, const unsigned char *pData, uint32_t dwSize)
 {
-	DWORD dwPos = xsf_tagsearchraw(pData, dwSize);
+	uint32_t dwPos = xsf_tagsearchraw(pData, dwSize);
 	if (dwSize < dwPos + 5) return 0;
 	if (memcmp(pData + dwPos, "[TAG]", 5)) return 0;
 	*pdwRet = dwPos + 5;
@@ -392,16 +392,16 @@ enum xsf_tagenum_callback_returnvalue
 	xsf_tagenum_callback_returnvaluebreak = 1
 };
 typedef int (*pfnxsf_tagenum_callback_t)(void *pWork, const char *pNameTop, const char *pNameEnd, const char *pValueTop, const char *pValueEnd);
-static int xsf_tagenumraw(pfnxsf_tagenum_callback_t pCallBack, void *pWork, const void *pData, DWORD dwSize)
+static int xsf_tagenumraw(pfnxsf_tagenum_callback_t pCallBack, void *pWork, const void *pData, uint32_t dwSize)
 {
 	const char *pdata = (const char *)pData;
-	DWORD dwPos = 0;
+	uint32_t dwPos = 0;
 	while (dwPos < dwSize)
 	{
-		DWORD dwNameTop;
-		DWORD dwNameEnd;
-		DWORD dwValueTop;
-		DWORD dwValueEnd;
+		uint32_t dwNameTop;
+		uint32_t dwNameEnd;
+		uint32_t dwValueTop;
+		uint32_t dwValueEnd;
 		if (dwPos < dwSize && pdata[dwPos] == 0x0a) dwPos++;
 		while (dwPos < dwSize && pdata[dwPos] != 0x0a && 0x00 <= pdata[dwPos] && pdata[dwPos] <= 0x20)
 			dwPos++;
@@ -432,10 +432,10 @@ static int xsf_tagenumraw(pfnxsf_tagenum_callback_t pCallBack, void *pWork, cons
 	return 1;
 }
 
-static int xsf_tagenum(pfnxsf_tagenum_callback_t pCallBack, void *pWork, const void *pData, DWORD dwSize)
+static int xsf_tagenum(pfnxsf_tagenum_callback_t pCallBack, void *pWork, const void *pData, uint32_t dwSize)
 {
-	const BYTE *pdata = (const BYTE *)pData;
-	DWORD dwPos = 0;
+	const unsigned char *pdata = (const unsigned char *)pData;
+	uint32_t dwPos = 0;
 	if (!xsf_tagsearch(&dwPos, pdata, dwSize))
 		return 0;
 	return xsf_tagenumraw(pCallBack, pWork, pdata + dwPos, dwSize - dwPos);
@@ -451,7 +451,7 @@ typedef struct
 static int xsf_tagenum_callback_tagget(void *pWork, const char *pNameTop, const char *pNameEnd, const char *pValueTop, const char *pValueEnd)
 {
 	xsf_tagget_work_t *pwork = (xsf_tagget_work_t *)pWork;
-	if (pwork->taglen == pNameEnd - pNameTop && !_strnicmp(pNameTop, pwork->tag, pwork->taglen))
+	if (pwork->taglen == pNameEnd - pNameTop && !strncasecmp(pNameTop, pwork->tag, pwork->taglen))
 	{
 		char *ret = (char *)malloc(pValueEnd - pValueTop + 1);
 		if (!ret) return xsf_tagenum_callback_returnvaluecontinue;
@@ -463,31 +463,31 @@ static int xsf_tagenum_callback_tagget(void *pWork, const char *pNameTop, const 
 	return xsf_tagenum_callback_returnvaluecontinue;
 }
 
-static char *xsf_taggetraw(const char *tag, const void *pData, DWORD dwSize)
+static char *xsf_taggetraw(const char *tag, const void *pData, uint32_t dwSize)
 {
-	const BYTE *pdata = (const BYTE *)pData;
+	const unsigned char *pdata = (const unsigned char *)pData;
 	xsf_tagget_work_t work;
 	work.ret = 0;
 	work.tag = tag;
-	work.taglen = (DWORD)strlen(tag);
+	work.taglen = (uint32_t)strlen(tag);
 	xsf_tagenumraw(xsf_tagenum_callback_tagget, &work, pdata, dwSize);
 	return work.ret;
 }
 
-static char *xsf_tagget(const char *tag, const void *pData, DWORD dwSize)
+static char *xsf_tagget(const char *tag, const void *pData, uint32_t dwSize)
 {
-	const BYTE *pdata = (const BYTE *)pData;
+	const unsigned char *pdata = (const unsigned char *)pData;
 	xsf_tagget_work_t work;
 	work.ret = 0;
 	work.tag = tag;
-	work.taglen = (DWORD)strlen(tag);
+	work.taglen = (uint32_t)strlen(tag);
 	xsf_tagenum(xsf_tagenum_callback_tagget, &work, pdata, dwSize);
 	return work.ret;
 }
 
-static int xsf_tagget_exist(const char *tag, const void *pData, DWORD dwSize)
+static int xsf_tagget_exist(const char *tag, const void *pData, uint32_t dwSize)
 {
-	const BYTE *pdata = (const BYTE *)pData;
+	const unsigned char *pdata = (const unsigned char *)pData;
 	int exists;
 	char *value = xsf_tagget(tag, pdata, dwSize);
 	if (value)
@@ -502,7 +502,7 @@ static int xsf_tagget_exist(const char *tag, const void *pData, DWORD dwSize)
 	return exists;
 }
 
-static int xsf_tagget_int(const char *tag, const BYTE *pData, DWORD dwSize, int value_default)
+static int xsf_tagget_int(const char *tag, const unsigned char *pData, uint32_t dwSize, int value_default)
 {
 	int ret = value_default;
 	char *value = xsf_tagget(tag, pData, dwSize);
@@ -514,7 +514,7 @@ static int xsf_tagget_int(const char *tag, const BYTE *pData, DWORD dwSize, int 
 	return ret;
 }
 
-static double xsf_tagget_float(const char *tag, const BYTE *pData, DWORD dwSize, double value_default)
+static double xsf_tagget_float(const char *tag, const unsigned char *pData, uint32_t dwSize, double value_default)
 {
 	double ret = value_default;
 	char *value = xsf_tagget(tag, pData, dwSize);
@@ -526,11 +526,11 @@ static double xsf_tagget_float(const char *tag, const BYTE *pData, DWORD dwSize,
 	return ret;
 }
 
-static DWORD tag2ms(const char *p)
+static uint32_t tag2ms(const char *p)
 {
 	int f = 0;
-	DWORD b = 0;
-	DWORD r = 0;
+	uint32_t b = 0;
+	uint32_t r = 0;
 	for (;*p; p++)
 	{
 		if (*p >= '0' && *p <= '9')
