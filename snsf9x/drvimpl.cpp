@@ -1,7 +1,8 @@
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include <windows.h>
+#include <string.h>
 
 #include <zlib.h>
 #include "../xsfc/tagget.h"
@@ -21,6 +22,9 @@
 #include "snes9x/memmap.h"
 #include "snes9x/snes9x.h"
 
+typedef unsigned char BYTE;
+typedef  int32_t  INT32;
+typedef uint32_t UINT32, DWORD;
 
 static struct
 {
@@ -522,7 +526,7 @@ public:
 		unsigned bleft = (len - fil) & ~3;
 		if (bytes == 0) return;
 		if (bytes > bleft) bytes = bleft;
-		ZeroMemory(buf + fil, bytes);
+		memset(buf + fil, 0, bytes);
 	    S9xMixSamples(buf + fil, bytes >> 1);
 		fil += bytes;
 	}
@@ -572,7 +576,7 @@ int xsf_gen(void *pbuffer, unsigned samples)
 		{
 			len = bytes;
 		}
-		CopyMemory(des, buffer.buf + buffer.cur, len);
+		memcpy(des, buffer.buf + buffer.cur, len);
 		bytes -= len;
 		des += len;
 		buffer.cur += len;
