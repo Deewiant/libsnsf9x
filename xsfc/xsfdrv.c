@@ -18,41 +18,41 @@
 #pragma comment(linker,"/MERGE:.rdata=.text")
 #endif
 
-static void * PASCAL XSFLibAlloc(DWORD dwSize)
+static void * XSFLibAlloc(DWORD dwSize)
 {
 	return malloc(dwSize);
 }
-static void PASCAL XSFLibFree(void *lpPtr)
+static void XSFLibFree(void *lpPtr)
 {
 	free(lpPtr);
 }
-static int PASCAL XSFStart(void *lpPtr, DWORD dwSize)
+static int XSFStart(void *lpPtr, DWORD dwSize)
 {
 	return !xsf_start(lpPtr, dwSize);
 }
-static void PASCAL XSFGen(void *lpPtr, DWORD dwSamples)
+static void XSFGen(void *lpPtr, DWORD dwSamples)
 {
 	xsf_gen(lpPtr, dwSamples);
 }
-static void PASCAL XSFTerm(void)
+static void XSFTerm(void)
 {
 	xsf_term();
 }
 
 unsigned long dwChannelMute = 0;
 
-static void PASCAL XSFSetChannelMute(DWORD dwPage, DWORD dwMute)
+static void XSFSetChannelMute(DWORD dwPage, DWORD dwMute)
 {
 	if (dwPage == 0)
 		dwChannelMute = dwMute;
 }
 
 #ifdef XSFDRIVER_EXTENDPARAM1NAME
-static void PASCAL XSFSetExtendParam(DWORD dwId, LPCWSTR lpPtr)
+static void XSFSetExtendParam(DWORD dwId, LPCWSTR lpPtr)
 {
 	xsf_set_extend_param(dwId, lpPtr);
 }
-static void PASCAL XSFSetExtendParamVoid(DWORD dwId, const LPVOID lpPtr)
+static void XSFSetExtendParamVoid(DWORD dwId, const LPVOID lpPtr)
 {
 	xsf_set_extend_param_void(dwId, lpPtr);
 }
@@ -78,7 +78,7 @@ static IXSFDRV ifaossf =
 #endif
 };
 
-IXSFDRV * PASCAL XSFSetup(LPFNGETLIB_XSFDRV lpfn, void *lpWork)
+IXSFDRV * XSFSetup(LPFNGETLIB_XSFDRV lpfn, void *lpWork)
 {
 	lpfnGetLib = lpfn;
 	lpUserWrok = lpWork;
