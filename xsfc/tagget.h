@@ -15,7 +15,7 @@ protected:
 	static unsigned long GetWordLE(const void *pData)
 	{
 		const unsigned char *pdata = static_cast<const unsigned char *>(pData);
-		return pdata[0] | (unsigned long(pdata[1]) << 8) | (unsigned long(pdata[2]) << 16) | (unsigned long(pdata[3]) << 24);
+		return pdata[0] | ((unsigned long)(pdata[1]) << 8) | ((unsigned long)(pdata[2]) << 16) | ((unsigned long)(pdata[3]) << 24);
 	}
 
 public:

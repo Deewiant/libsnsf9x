@@ -586,7 +586,7 @@ public:
 		return *this;
 	}
 
-	static friend TString operator+(const wchar_t *p, const TString &s) throw(EShortOfMemory)
+	friend TString operator+(const wchar_t *p, const TString &s) throw(EShortOfMemory)
 	{
 		TString r;
 		const wchar_t *p2 = s.GetW();
@@ -612,7 +612,7 @@ public:
 	}
 	unsigned long GetULong() const throw(EShortOfMemory)
 	{
-		return unsigned long(atol(TStringM(GetW())));
+		return (unsigned long)(atol(TStringM(GetW())));
 	}
 	long GetLong() const throw(EShortOfMemory)
 	{
