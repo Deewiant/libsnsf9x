@@ -2,6 +2,15 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
+
+#define PASCAL
+typedef int BOOL;
+typedef uint32_t DWORD;
+typedef const wchar_t* LPCWSTR;
+typedef char* LPSTR;
+typedef void* LPVOID;
+
 typedef int (PASCAL * LPFNGETLIB_XSFDRV)(void *lpWork, LPSTR lpszFilename, void **ppBuffer, DWORD *pdwSize);
 typedef struct
 {
