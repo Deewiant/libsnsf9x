@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="loadpe">
+      <UniqueIdentifier>{59efa938-c186-464d-8e25-78e93a545f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xsfc">
+      <UniqueIdentifier>{3ddc82a8-baed-4885-9dc6-c678180c42ea}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="loadpe\loadpe.c">
+      <Filter>loadpe</Filter>
+    </ClCompile>
+    <ClCompile Include="xsfc\xsfc.cpp">
+      <Filter>xsfc</Filter>
+    </ClCompile>
+    <ClCompile Include="xsfc\kbxsf.c">
+      <Filter>xsfc</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="loadpe\loadpe.h">
+      <Filter>loadpe</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\leakchk.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\tagget.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\winresx.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\xsfc.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\xsfdrv.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="pversion.h" />
+  </ItemGroup>
+</Project>

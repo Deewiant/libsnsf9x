@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{986ae5ea-8b89-4e2f-aab1-be96fd005b2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{7fa657f8-56c4-4441-a776-2f5e8da6f648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="snsf9x">
+      <UniqueIdentifier>{eb6dbc35-1127-40db-b22b-b3c8ab8f6e00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xsfc">
+      <UniqueIdentifier>{78454719-e039-4260-a3de-ca050d174f17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="in_xsf_framework">
+      <UniqueIdentifier>{54d0ce20-a5e9-4d24-840e-bc81ff880a2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="snsf9x\snes9x">
+      <UniqueIdentifier>{7bc8d9c9-d826-4f2e-8b97-c9441a2ca1f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="snsf9x\snes9x\apu">
+      <UniqueIdentifier>{32cd2a61-7253-4281-8922-1e2dffdc5370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="snsf9x\zlib">
+      <UniqueIdentifier>{6f44a228-fd69-4869-a0d3-d65ad5643465}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="in_xsf_framework\convert.h">
+      <Filter>in_xsf_framework</Filter>
+    </ClInclude>
+    <ClInclude Include="in_xsf_framework\windowsh_wrapper.h">
+      <Filter>in_xsf_framework</Filter>
+    </ClInclude>
+    <ClInclude Include="in_xsf_framework\XSFCommon.h">
+      <Filter>in_xsf_framework</Filter>
+    </ClInclude>
+    <ClInclude Include="pversion.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\drvimpl.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\leakchk.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\tagget.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\winresx.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\xsfc.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="xsfc\xsfdrv.h">
+      <Filter>xsfc</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\apu.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\blargg_common.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\blargg_config.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\blargg_endian.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\bspline_resampler.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\hermite_resampler.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\linear_resampler.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\osculating_resampler.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\resampler.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\ring_buffer.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\sinc_resampler.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\SNES_SPC.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\SPC_CPU.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\apu\SPC_DSP.h">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\65c816.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\cpuaddr.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\cpuexec.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\cpumacro.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\cpuops.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\dma.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\getset.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\memmap.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\port.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\ppu.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\sdd1.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\snes9x\snes9x.h">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\zlib\crc32.h">
+      <Filter>snsf9x\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\zlib\inffast.h">
+      <Filter>snsf9x\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\zlib\inffixed.h">
+      <Filter>snsf9x\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\zlib\inflate.h">
+      <Filter>snsf9x\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\zlib\inftrees.h">
+      <Filter>snsf9x\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\zlib\zconf.h">
+      <Filter>snsf9x\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\zlib\zlib.h">
+      <Filter>snsf9x\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="snsf9x\zlib\zutil.h">
+      <Filter>snsf9x\zlib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="xsfc\xsfc.cpp">
+      <Filter>xsfc</Filter>
+    </ClCompile>
+    <ClCompile Include="xsfc\xsfdrv.c">
+      <Filter>xsfc</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\drvimpl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\apu\apu.cpp">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\apu\SNES_SPC.cpp">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\apu\SNES_SPC_misc.cpp">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\apu\SPC_DSP.cpp">
+      <Filter>snsf9x\snes9x\apu</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\cpu.cpp">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\cpuexec.cpp">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\cpuops.cpp">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\dma.cpp">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\globals.cpp">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\memmap.cpp">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\ppu.cpp">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\snes9x\sdd1.cpp">
+      <Filter>snsf9x\snes9x</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\zlib\adler32.c">
+      <Filter>snsf9x\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\zlib\crc32.c">
+      <Filter>snsf9x\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\zlib\infback.c">
+      <Filter>snsf9x\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\zlib\inflate.c">
+      <Filter>snsf9x\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\zlib\inftrees.c">
+      <Filter>snsf9x\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\zlib\uncompr.c">
+      <Filter>snsf9x\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="snsf9x\zlib\zutil.c">
+      <Filter>snsf9x\zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="snsf9x\zlib\contrib\masmx86\inffas32.obj">
+      <Filter>snsf9x\zlib</Filter>
+    </Object>
+  </ItemGroup>
+</Project>
