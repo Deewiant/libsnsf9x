@@ -28,7 +28,7 @@
 namespace xsfc
 {
 
-const std::nothrow_t nothrow;
+using std::nothrow;
 
 class EBaseException
 {
