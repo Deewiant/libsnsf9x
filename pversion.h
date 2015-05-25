@@ -1,8 +1,14 @@
+/* Identifiers that can be used with the SetExtendParamVoid function. */
+#define XSFDRIVER_EXTENDPARAM_INTERPOLATION    1
+#define XSFDRIVER_EXTENDPARAM_RESAMPLER        2
+#define XSFDRIVER_EXTENDPARAM_SAMPLE_RATE      3
+#define XSFDRIVER_EXTENDPARAM_DISABLE_SURROUND 4
+#define XSFDRIVER_EXTENDPARAM_REVERSE_STEREO   5
+
 #define XSFDRIVER_INTERPOLATION_NAME { "Gaussian", "None", "Linear", "Cubic", "Sinc" }
 #define XSFDRIVER_INTERPOLATION_VALUE { 0, -2, -1, 1, 2 }
 #define XSFDRIVER_RESAMPLER_NAME { "Hermite", "Linear", "Bspline", "Osculating", "Sinc" }
 #define XSFDRIVER_RESAMPLER_VALUE {1, -1, 2, 3, 4}
-
 
 #define SNES9X_NAME "Snes9x"
 #define SNES9X_VERSIONS "v1.53"
