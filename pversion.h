@@ -170,35 +170,3 @@
 "\n" \
 "  Specific ports contains the works of other authors. See headers in\n" \
 "  individual files.\n"
-
-#define ADDITIONAL_LIBRARY_COPYRIGHT \
-"in_snsf\n" \
-"  by Naram Qashat (CyberBotX) [cyberbotx@cyberbotx.com]\n" \
-"\n" \
-"libloadpe\n" \
-"  (c) Copyright 2007 Ku-Zu\n"
-
-#define WINAMPPLUGIN_COPYRIGHT SNES9X_COPYRIGHT "\n" ADDITIONAL_LIBRARY_COPYRIGHT
-#define WINAMPPLUGIN_NAME "SNSF Decoder " XSFDRIVER_VERSIONS "/ " SNES9X_NAME " " SNES9X_VERSIONS " (x86)"
-#define WINAMPPLUGIN_EXTS "SNSF;MINISNSF\0Super Nes Sound Format files(*.SNSF;*.MINISNSF)\0\0\0"
-#define WINAMPPLUGIN_TAG_XSFBY "snsfby"
-
-#define KBMEDIAPLUGIN_VERSION 4
-#define KBMEDIAPLUGIN_COPYRIGHT SNES9X_COPYRIGHT "\n" ADDITIONAL_LIBRARY_COPYRIGHT
-#define KBMEDIAPLUGIN_NAME "SNSF plugin " XSFDRIVER_VERSIONS " / " SNES9X_NAME " " SNES9X_VERSIONS
-#define KBMEDIAPLUGIN_EXTS(n)	\
-	static const char n##_snsfext[] = ".snsf";	\
-	static const char n##_minisnsfext[] = ".minisnsf";	\
-	static const char * const (n) [] = {	\
-		n##_snsfext,	\
-		n##_minisnsfext,	\
-		0,	\
-	};
-
-#define FOOBAR2000COMPONENT_NAME "SNSF decoder / " SNES9X_NAME " " SNES9X_VERSIONS
-#define FOOBAR2000COMPONENT_VERSION XSFDRIVER_VERSIONS
-#define FOOBAR2000COMPONENT_ABOUT SNES9X_NAME " " SNES9X_VERSIONS "\n" SNES9X_COPYRIGHT "\n" ADDITIONAL_LIBRARY_COPYRIGHT
-#define FOOBAR2000COMPONENT_TYPE "Super Nes Sound Format files"
-#define FOOBAR2000COMPONENT_EXTS "*.SNSF;*.MINISNSF"
-#define FOOBAR2000COMPONENT_EXT_CHECK (!stricmp_utf8(p_extension,"SNSF") || !stricmp_utf8(p_extension,"MINISNSF"))
-#define FOOBAR2000COMPONENT_ENCODING "snsf"
