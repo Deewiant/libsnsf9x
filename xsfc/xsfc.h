@@ -15,6 +15,7 @@
 #include <new>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 #if !defined(HAVE_SPRINTF_S) && !defined(HAVE_SNPRINTF_) && defined(_MSC_VER)
