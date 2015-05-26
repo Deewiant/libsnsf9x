@@ -52,7 +52,6 @@ static void XSFSetChannelMute(DWORD dwPage, DWORD dwMute)
 		dwChannelMute = dwMute;
 }
 
-#ifdef XSFDRIVER_EXTENDPARAM1NAME
 static void XSFSetExtendParam(DWORD dwId, LPCWSTR lpPtr)
 {
 	xsf_set_extend_param(dwId, lpPtr);
@@ -61,7 +60,6 @@ static void XSFSetExtendParamVoid(DWORD dwId, const LPVOID lpPtr)
 {
 	xsf_set_extend_param_void(dwId, lpPtr);
 }
-#endif
 
 static void *lpUserWrok = 0;
 static LPFNGETLIB_XSFDRV lpfnGetLib = 0;
@@ -72,15 +70,10 @@ static IXSFDRV ifaossf =
 	XSFStart,
 	XSFGen,
 	XSFTerm,
-#ifdef XSFDRIVER_EXTENDPARAM1NAME
 	5,
 	XSFSetChannelMute,
 	XSFSetExtendParam, 
 	XSFSetExtendParamVoid
-#else
-	2,
-	XSFSetChannelMute
-#endif
 };
 
 IXSFDRV * XSFSetup(LPFNGETLIB_XSFDRV lpfn, void *lpWork)
