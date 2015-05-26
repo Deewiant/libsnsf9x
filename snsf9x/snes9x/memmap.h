@@ -251,11 +251,11 @@ struct CMemory
 	void ParseSNESHeader(uint8_t *);
 	void InitROM();
 
-	uint32_t map_mirror(uint32_t, uint32_t);
+	int32_t map_mirror(uint32_t, uint32_t);
 	void map_lorom(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
 	void map_hirom(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-	void map_lorom_offset(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-	void map_hirom_offset(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+	void map_lorom_offset(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, int32_t);
+	void map_hirom_offset(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, int32_t);
 	void map_space(uint32_t, uint32_t, uint32_t, uint32_t, uint8_t *);
 	void map_index(uint32_t, uint32_t, uint32_t, uint32_t, int, int);
 	void map_System();

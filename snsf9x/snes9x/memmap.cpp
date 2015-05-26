@@ -511,7 +511,7 @@ again:
 	{
 		auto tmp = std::vector<uint8_t>(this->CalculatedSize - 0x400000);
 		std::copy_n(&this->ROM[0], this->CalculatedSize - 0x400000, &tmp[0]);
-		std::copy_n(&this->ROM[this->CalculatedSize - 0x400000], 0x400000, &this->ROM[0]);
+		std::copy_n(&this->ROM[int32_t(this->CalculatedSize - 0x400000)], 0x400000, &this->ROM[0]);
 		std::copy_n(&tmp[0], this->CalculatedSize - 0x400000, &this->ROM[0x400000]);
 	}
 
@@ -675,7 +675,7 @@ void CMemory::InitROM()
 
 // memory map
 
-uint32_t CMemory::map_mirror(uint32_t size, uint32_t pos)
+int32_t CMemory::map_mirror(uint32_t size, uint32_t pos)
 {
 	// from bsnes
 	if (!size)
@@ -700,7 +700,7 @@ void CMemory::map_lorom(uint32_t bank_s, uint32_t bank_e, uint32_t addr_s, uint3
 		{
 			uint32_t p = (c << 4) | (i >> 12);
 			uint32_t addr = (c & 0x7f) * 0x8000;
-			this->Map[p] = &this->ROM[this->map_mirror(size, addr) - (i & 0x8000)];
+			this->Map[p] = &this->ROM[this->map_mirror(size, addr) - int32_t(i & 0x8000)];
 			this->BlockIsROM[p] = true;
 			this->BlockIsRAM[p] = false;
 		}
@@ -719,7 +719,7 @@ void CMemory::map_hirom(uint32_t bank_s, uint32_t bank_e, uint32_t addr_s, uint3
 		}
 }
 
-void CMemory::map_lorom_offset(uint32_t bank_s, uint32_t bank_e, uint32_t addr_s, uint32_t addr_e, uint32_t size, uint32_t offset)
+void CMemory::map_lorom_offset(uint32_t bank_s, uint32_t bank_e, uint32_t addr_s, uint32_t addr_e, uint32_t size, int32_t offset)
 {
 	for (uint32_t c = bank_s; c <= bank_e; ++c)
 		for (uint32_t i = addr_s; i <= addr_e; i += 0x1000)
@@ -732,7 +732,7 @@ void CMemory::map_lorom_offset(uint32_t bank_s, uint32_t bank_e, uint32_t addr_s
 		}
 }
 
-void CMemory::map_hirom_offset(uint32_t bank_s, uint32_t bank_e, uint32_t addr_s, uint32_t addr_e, uint32_t size, uint32_t offset)
+void CMemory::map_hirom_offset(uint32_t bank_s, uint32_t bank_e, uint32_t addr_s, uint32_t addr_e, uint32_t size, int32_t offset)
 {
 	for (uint32_t c = bank_s; c <= bank_e; ++c)
 		for (uint32_t i = addr_s; i <= addr_e; i += 0x1000)
