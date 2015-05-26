@@ -23,8 +23,6 @@ typedef struct
 	void (* SetExtendParamVoid)(uint32_t dwId, const void* lpPtr);
 } IXSFDRV;
 
-typedef IXSFDRV * (* LPFNXSFDRVSETUP)(LPFNGETLIB_XSFDRV lpfn, void *lpWork);
-
 #ifdef __cplusplus
 }
 #endif
