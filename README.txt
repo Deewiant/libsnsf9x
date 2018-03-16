@@ -1,6 +1,7 @@
 SNSF playing library based on the Snes9x emulator.
 
-Essentially snsf9x 0.04.10, stripped down and modified to compile on Linux.
+Essentially snsf9x 0.04.10, stripped down and modified to compile on Linux, and
+with a few fixes for undefined behaviour and such.
 
 
 Old snsf9x changelog:
