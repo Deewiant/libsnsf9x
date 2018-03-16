@@ -76,6 +76,9 @@ static IXSFDRV ifaossf =
 	XSFSetExtendParamVoid
 };
 
+#if defined(__GNUC__) && __GNUC__ >= 4
+__attribute__ ((visibility ("default")))
+#endif
 IXSFDRV * XSFSetup(LPFNGETLIB_XSFDRV lpfn, void *lpWork)
 {
 	lpfnGetLib = lpfn;
