@@ -219,6 +219,7 @@ namespace spc
 
 	static std::unique_ptr<uint8_t[]> landing_buffer;
 	static std::unique_ptr<uint8_t[]> shrink_buffer;
+	static int shrink_buffer_size = -1;
 
 	static std::unique_ptr<Resampler> resampler;
 
@@ -263,7 +264,6 @@ static void ReverseStereo(uint8_t *src_buffer, int sample_count)
 
 bool S9xMixSamples(uint8_t *buffer, int sample_count)
 {
-	static int shrink_buffer_size = -1;
 	uint8_t *dest;
 
 	if (!Settings.SixteenBitSound || !Settings.Stereo)
@@ -273,10 +273,10 @@ bool S9xMixSamples(uint8_t *buffer, int sample_count)
 			sample_count <<= 1;
 
 		/* We still have to generate 16-bit samples for bit-dropping, too */
-		if (shrink_buffer_size < (sample_count << 1))
+		if (spc::shrink_buffer_size < (sample_count << 1))
 		{
 			spc::shrink_buffer.reset(new uint8_t[sample_count << 1]);
-			shrink_buffer_size = sample_count << 1;
+			spc::shrink_buffer_size = sample_count << 1;
 		}
 
 		dest = spc::shrink_buffer.get();
@@ -450,6 +450,7 @@ bool S9xInitAPU()
 
 	spc::landing_buffer.reset();
 	spc::shrink_buffer.reset();
+	spc::shrink_buffer_size = -1;
 	spc::resampler.reset();
 
 	spc_core->interpolation_level(Settings.InterpolationLevel);
