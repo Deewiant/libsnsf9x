@@ -499,6 +499,8 @@ public:
 	{
 		len = 2*2*SampleRate/5;
 		buf = (unsigned char *)malloc(len);
+		cur = 0;
+		fil = 0;
 		return buf != NULL;
 	}
 	void Fill(void)
